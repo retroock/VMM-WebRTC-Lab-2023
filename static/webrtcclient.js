@@ -36,14 +36,22 @@ async function call() {
 async function enable_camera() {
 
   // *** TODO ***: define constraints: set video to true, audio to true
-  
+  const constraints = {'video':true,'audio':false};
+
   // *** TODO ***: uncomment the following log message
   console.log('Getting user media with constraints', constraints);
 
   // *** TODO ***: use getUserMedia to get a local media stream from the camera.
   //               If this fails, use getDisplayMedia to get a screen sharing stream.
+  let stream;
+  try {
+    stream = await navigator.mediaDevices.getUserMedia(constraints);
 
+  } catch(error) {
+    stream = await navigator.mediaDevices.getDisplayMedia(constraints);
+  }
   document.getElementById('localVideo').srcObject = stream;
+
   return stream;
 }
 
