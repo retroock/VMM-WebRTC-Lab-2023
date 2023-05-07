@@ -130,7 +130,7 @@ function call_room(socket) {
   if (room != '') {
       console.log('Joining room: ' + room);
       // *** TODO ***: send a join message to the server with room as argument.
-
+      socket.emit('join', room);
   }
 }
 
