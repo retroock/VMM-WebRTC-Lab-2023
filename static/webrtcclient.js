@@ -162,6 +162,11 @@ function add_peerconnection_handlers(peerConnection) {
   // onicecandidate -> handle_local_icecandidate
   // ontrack -> handle_remote_track
   // ondatachannel -> handle_remote_datachannel
+  peerConnection.onicecandidate = handle_local_icecandidate(peerConnection.candidate);
+
+  peerConnection.ontrack = handle_remote_track(peerConnection.track);
+
+  peerConnection.ondatachannel = handle_remote_datachannel(peerConnection.dataChannel);
 }
 
 // ==========================================================================
