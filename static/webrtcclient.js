@@ -145,9 +145,11 @@ function create_peerconnection(localStream) {
 
   // *** TODO ***: create a new RTCPeerConnection with this configuration
   // const pc = ...
-
+  const pc = new RTCPeerConnection(pcConfiguration);
   // *** TODO ***: add all tracks of the local stream to the peerConnection
-
+  localStream.getTracks().forEach(track => {
+    pc.addTrack(track, localStream);
+  });
   return pc;
 }
 
