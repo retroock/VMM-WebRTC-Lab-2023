@@ -65,6 +65,7 @@ function create_signaling_connection() {
   // *** TODO ***: create a socket by simply calling the io() function
   //               provided by the socket.io library (included in index.html).
   //  const socket = ...
+      const socket = io();
   return socket;
 }
 
